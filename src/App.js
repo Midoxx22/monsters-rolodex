@@ -21,7 +21,7 @@ class App extends Component {
     .then(response => response.json())
     .then(test => this.setState({monsterArr: test}))
   } 
-werwrrwwrwr
+
   render(){
     const {monsterArr, searchField} = this.state;
     const filteredArr = monsterArr.filter(monster => monster.name.toLowerCase().includes(searchField.toLowerCase()))
