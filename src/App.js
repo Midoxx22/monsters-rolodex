@@ -4,6 +4,8 @@ import './App.css';
 
 import {CardList} from './components/card-list/card-list.component.jsx'
 
+import { SearchBox } from "./components/search-box/search-box.component.jsx"
+
 
 
 class App extends Component {
@@ -22,13 +24,17 @@ class App extends Component {
     .then(test => this.setState({monsterArr: test}))
   } 
 
+  changeHandler = e => {
+    this.setState({searchField: e.target.value})
+  }
+
   render(){
     const {monsterArr, searchField} = this.state;
     const filteredArr = monsterArr.filter(monster => monster.name.toLowerCase().includes(searchField.toLowerCase()))
   return (
     <div className="App">
-      <input type="search" placeholder="Search Monster" onChange={e => {this.setState({searchField: e.target.value})}}/>
-      {console.log(this.state)}
+      <h1> Monsters Rolodex </h1>
+      <SearchBox placeholder="Suche Monster" handleChange={this.changeHandler}/>
       <CardList monsters={filteredArr}/>
       
     </div>
